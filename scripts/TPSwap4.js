@@ -7,6 +7,8 @@ const ethers = require('ethers');
 const swap = async() => {
 const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18)
 
+
+
 // note that you may want/need to handle this async code differently,
 // for example if top-level await is not an option
 const pair = await Fetcher.fetchPairData(DAI, WETH[DAI.chainId])
@@ -38,7 +40,7 @@ const abi = [{"inputs":[{"internalType":"uint256","name":"amountOutMin","type":"
 
 const contractUniswap = new ethers.Contract('0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D', abi, account)
 
-const montant = ethers.BigNumber.from('1000000000000000000');
+const montant = ethers.BigNumber.from('1000000000000000000'); 
 const Tx = await contractUniswap.swapExactETHForTokens(String(amountOutMin), path, to , deadline , { value : montant, gasPrice: 20e10, gasLimit: 250000 });
 
 
